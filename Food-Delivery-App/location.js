@@ -11,8 +11,8 @@ export default function Location({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', alignSelf: 'center' }}>
             <View style={{ flex: 1, justifyContent: 'center' }}>
-                <Pressable style={styles.button} onPress={() => navigation.navigate('Welcome')}>
-                    <Text style={styles.buttonText}>Go Back</Text>
+                <Pressable style={styles.button} onPress={() => navigation.navigate('Restaurants Header')}>
+                    <Text style={styles.buttonText}>Confirm</Text>
                 </Pressable>
             </View>
         </View>

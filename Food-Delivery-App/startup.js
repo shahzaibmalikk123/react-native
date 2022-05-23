@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable, SafeAreaView } from 'react-native';
 
 const colorScheme = {
     brown: '#C6742E', blue: '#6DC8E8', red: '#D4263F', orange: '#F18933',
@@ -23,7 +23,7 @@ export default function Startup({ navigation }) {
                         <Text style={styles.buttonText}>Enter my location</Text>
                     </Pressable>
                 </View>
-                <StatusBar style={styles.statusBar} />
+                <StatusBar />
             </View>
         </View>
     );
