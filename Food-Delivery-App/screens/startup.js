@@ -12,7 +12,7 @@ export default function Startup({ navigation }) {
         <View style={styles.container}>
             <View style={styles.subcontainer}>
                 <View style={{ marginTop: 20 }}>
-                    <Image source={require("./assets/Component1.png")} />
+                    <Image source={require("../assets/Component1.png")} />
                 </View>
                 <View style={{ marginVertical: 70 }}>
                     <Text style={styles.heading}>Find restaurants near you!</Text>
