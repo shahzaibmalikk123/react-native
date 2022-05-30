@@ -36,7 +36,7 @@ export default function Login({ navigation }) {
             .then(userCredentials => {
                 const user = userCredentials.user;
                 console.log('Logged in with: ', user.email);
-                // navigation.navigate('Location');
+                navigation.navigate('Location');
             })
             .catch(error => alert(error.message))
     }
@@ -53,7 +53,7 @@ export default function Login({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
-                <Image source={require('../assets/logo.png')} style={styles.logoImage} />
+                <Image source={require('../assets/images/logo.png')} style={styles.logoImage} />
                 <Text style={styles.logoText}>SWIFT DELIVERS</Text>
             </View>
             <View style={styles.inputContainer}>

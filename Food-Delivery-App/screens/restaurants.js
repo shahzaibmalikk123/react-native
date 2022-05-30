@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { Dimensions, Text, View, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import Categories from '../components/categories';
+import RestaurantItems from '../components/restaurantItems';
 // import { Divider } from 'react-native-elements';
 
 const colorScheme = {
@@ -13,7 +14,6 @@ const colorScheme = {
 };
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 export default function Restaurants({ navigation, route }) {
     const [activeButton, activateButton] = useState(0);
@@ -74,31 +74,21 @@ export default function Restaurants({ navigation, route }) {
 
             {/* Usama's Part */}
             <View style={styles.categories}>
-
+                <Categories />
+                <RestaurantItems navigation={navigation} />
             </View>
 
             {/* Bottom Tabs */}
-            <View style={styles.bottomtabs}>
+            {/* <View style={styles.bottomtabs}>
                 <Icon name="home" text="Home" />
                 <Icon name="search" text="Browse" />
                 <Icon name="shopping-bag" text="Grocery" />
                 <Icon name="receipt" text="Orders" />
                 <Icon name="user" text="Account" />
-            </View>
+            </View> */}
         </SafeAreaView >
     );
 }
-
-const Icon = (props) => (
-    <View>
-        <FontAwesome5
-            name={props.name}
-            size={25}
-            style={{ marginBottom: 3, alignSelf: 'center' }}
-        />
-        <Text>{props.text}</Text>
-    </View>
-)
 
 const styles = StyleSheet.create({
     container: {
@@ -115,7 +105,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         width: windowWidth,
         // marginTop: 10,
-
     },
     activebutton: {
         backgroundColor: 'black',
@@ -143,6 +132,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: '#fff',
         width: windowWidth,
+        marginBottom: -47,
     },
     searchoption: {
         marginLeft: 10,
@@ -154,16 +144,21 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     categories: {
-        height: 500,
-    },
-    bottomtabs: {
+        // backgroundColor: '#ecf0f1',
+        padding: 8,
         flex: 1,
-        flexDirection: 'row',
-        backgroundColor: '#fff',
-        justifyContent: 'space-around',
-        alignItems: 'flex-end',
-        marginTop: 20,
-        paddingHorizontal: 10,
-        width: windowWidth,
+        justifyContent: 'center',
+        width: '100%',
+        // marginTop: 10,
     },
+    // bottomtabs: {
+    //     flex: 1,
+    //     flexDirection: 'row',
+    //     backgroundColor: '#fff',
+    //     justifyContent: 'space-around',
+    //     alignItems: 'center',
+    //     marginTop: 20,
+    //     paddingHorizontal: 10,
+    //     width: windowWidth,
+    // },
 });

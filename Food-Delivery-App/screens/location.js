@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { Text, StyleSheet, Pressable, ImageBackground, View, Dimensions } from 'react-native';
+import { Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, ImageBackground, View, Dimensions } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 const colorScheme = {
@@ -14,8 +14,8 @@ const windowWidth = Dimensions.get('window').width;
 export default function Location({ navigation }) {
     const [location, setLocation] = useState('');
     return (
-        <View style={styles.container}>
-            <ImageBackground source={require('../assets/pn1.png')} resizeMode="cover">
+        <SafeAreaView style={styles.container}>
+            <ImageBackground source={require('../assets/images/pn1.png')} resizeMode="cover">
                 <View style={styles.search}>
                     <GooglePlacesAutocomplete
                         query={{ key: 'AIzaSyCSWIgeYITb8iY4QS2dchDDO5oB3D4jeHE' }}
@@ -25,10 +25,10 @@ export default function Location({ navigation }) {
                         }}
                         styles={{
                             textInput: {
+                                // marginBottom: 20,
                                 // marginHorizontal: 20,
                                 borderRadius: 20,
                                 backgroundColor: '#eee',
-                                // marginBottom: 20,
                                 marginTop: 7,
                                 fontWeight: '700',
                             },
@@ -61,12 +61,13 @@ export default function Location({ navigation }) {
             </View> */}
 
                 <View style={{ flex: 1, justifyContent: 'center', alignSelf: 'center' }}>
-                    <Pressable style={styles.button} onPress={() => navigation.navigate('Restaurants Header', { location: { location } })}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('RestaurantsHeader', { location: { location } })}>
                         <Text style={styles.buttonText}>Confirm Location</Text>
-                    </Pressable>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
-        </View>
+            <ScrollView />
+        </SafeAreaView>
     );
 };
 
