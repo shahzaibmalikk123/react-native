@@ -27,6 +27,7 @@ export default function Login({ navigation }) {
             .then(userCredentials => {
                 const user = userCredentials.user;
                 console.log('Registered with: ', user.email);
+                navigation.navigate('Welcome');
             })
             .catch(error => alert(error.message))
     }

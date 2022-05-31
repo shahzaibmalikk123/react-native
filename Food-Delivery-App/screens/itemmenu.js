@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Modal, Text, View, ScrollView, Image } from 'react-native';
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { StyleSheet, Modal, Text, View, ScrollView, Image, TouchableOpacity, Pressable } from 'react-native';
 import { Divider } from 'react-native-elements';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { useState } from 'react';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const restaurentInfo = {
     name: "Tanduri Restaurent Islamabad",
@@ -169,6 +169,10 @@ const foods = [
 
 export default function ItemMenu({ route, navigation }) {
     const [modal, setModal] = useState(false);
+    const checkout = () => {
+        setModal(false);
+        navigation.navigate("Checkout");
+    }
     return (
         <View>
             <ScrollView>
@@ -200,13 +204,17 @@ export default function ItemMenu({ route, navigation }) {
 
             <View style={{ flex: 1, alignItems: 'center', marginLeft: 153, justifyContent: 'center', flexDirection: 'row', position: 'absolute', bottom: 10, }}>
                 < View style={{ flexDirection: 'row', justifyContent: "center", width: 100, }}>
-                    <TouchableOpacity style={{ width: 300, backgroundColor: '#D4263F', borderRadius: 30, padding: 13, alignItems: 'center', position: "relative" }}>
-                        <Text style={{ color: 'white', fontSize: 19, fontWeight: '700' }}>
-                            VIEWCART
+                    <TouchableOpacity style={{ width: 300, backgroundColor: '#D4263F', borderRadius: 30, padding: 13, alignItems: 'center' }}
+                        onPress={() => setModal(true)}
+                    >
+                        <Text style={{ color: 'white', fontSize: 19 }}>
+                            View Cart
                         </Text>
                     </TouchableOpacity>
                 </View>
             </View>
+
+            {/* View Cart Model */}
 
             <Modal
                 animationType='slide'
@@ -215,7 +223,31 @@ export default function ItemMenu({ route, navigation }) {
                 onRequestClose={() => setModal(false)}>
                 <View style={styles.modalContainer}>
                     <View style={styles.modalSubcontainer}>
-
+                        <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 18, fontWeight: '700', marginLeft: 120, marginRight: 100 }}>FIG Restaurant</Text>
+                            <View>
+                                <Pressable onPress={() => setModal(false)}>
+                                    <Ionicons name="close-circle-outline" size={24} />
+                                </Pressable>
+                            </View>
+                        </View>
+                        <View style={{ width: '100%' }}>
+                            <View style={styles.orderItem}>
+                                <Text style={{ fontWeight: '600', fontSize: 16 }}>Tandoori Chicken</Text>
+                                <Text style={{ opacity: 0.7, fontSize: 16 }}>899 Rs.</Text>
+                            </View>
+                            <View style={styles.orderItem}>
+                                <Text style={{ fontWeight: '600', fontSize: 16 }}>Chicken Tikka</Text>
+                                <Text style={{ opacity: 0.7, fontSize: 16 }}>300 Rs.</Text>
+                            </View>
+                        </View>
+                        <View style={styles.subTotal}>
+                            <Text style={{ fontWeight: '600', fontSize: 14 }}>Subtotal</Text>
+                            <Text style={{ fontSize: 14 }}>1199 Rs.</Text>
+                        </View>
+                        <TouchableOpacity style={styles.checkoutButton} onPress={() => checkout()}>
+                            <Text style={{ color: '#fff', fontSize: 20 }}>Checkout</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </Modal>
@@ -236,12 +268,46 @@ const styles = StyleSheet.create({
         fontWeight: "600",
     },
     modalContainer: {
-
+        width: '100%',
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        marginTop: 56,
+        backgroundColor: "rgba(0,0,0,0.6)",
+        // marginHorizontal: 20,
     },
     modalSubcontainer: {
-
+        padding: 20,
+        backgroundColor: '#fff',
+        width: '100%',
+        alignItems: 'center',
+        paddingBottom: 150,
+    },
+    checkoutButton: {
+        backgroundColor: '#D4263F',
+        padding: 13,
+        borderRadius: 30,
+        width: 300,
+        alignItems: 'center',
+    },
+    orderItem: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        padding: 20,
+        borderBottomWidth: 1,
+        borderBottomColor: '#999',
+    },
+    subTotal: {
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingTop: 20,
+        paddingBottom: 40,
     },
 })
+
+
+
 
 const FoodInfo = (props) => (
     <View style={{ width: 240, justifyContent: "space-evenly" }}>

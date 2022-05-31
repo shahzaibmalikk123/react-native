@@ -7,6 +7,7 @@ import Restaurants from './screens/restaurants';
 import Login from './screens/login_signup';
 import ItemMenu from './screens/itemmenu';
 import RestaurantItems from './components/restaurantItems';
+import Checkout from './screens/checkout';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -22,6 +23,7 @@ const App = () => {
         <Stack.Screen name="RestaurantsHeader" component={Restaurants} />
         <Stack.Screen name="Item Menu" component={ItemMenu} />
         <Stack.Screen name="RestaurantItems" component={RestaurantItems} />
+        <Stack.Screen name="Checkout" component={Checkout} />
       </Stack.Navigator>
     </NavigationContainer>
   );
