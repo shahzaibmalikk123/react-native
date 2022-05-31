@@ -246,7 +246,7 @@ export default function ItemMenu({ route, navigation }) {
                             <Text style={{ fontSize: 14 }}>1199 Rs.</Text>
                         </View>
                         <TouchableOpacity style={styles.checkoutButton} onPress={() => checkout()}>
-                            <Text style={{ color: '#fff', fontSize: 20 }}>Checkout</Text>
+                            <Text style={{ color: 'white', fontSize: 20 }}>Checkout</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

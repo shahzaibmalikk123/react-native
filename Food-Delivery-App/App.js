@@ -11,9 +11,7 @@ import Checkout from './screens/checkout';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
-  const screenOptions = {
-    headerShown: false,
-  };
+  
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Login' >
